@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScrapX Resources · Global Scrap Trading & Supply Chain Solutions</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+
+        /* ===== CORPORATE COLOR PALETTE ===== */
+        :root {
+            --primary: #0a2c3d;      /* deep teal */
+            --secondary: #1e4a6d;     /* navy */
+            --accent: #00b4d8;        /* bright cyan */
+            --gray-100: #f8fafc;
+            --gray-200: #eef2f6;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --text-dark: #0f172a;
+            --text-light: #475569;
+            --white: #ffffff;
+            --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.03);
+            --shadow-md: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ===== HEADER - TOP FIXED (ZERO GAP) ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 180, 216, 0.1);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.8rem 5%;  /* Reduced padding */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-icon {
+            width: 36px;  /* Slightly smaller */
+            height: 36px;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+            letter-spacing: -0.3px;
+        }
+
+        .logo-text span {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent);
+        }
+
+        .header-btn {
+            background: var(--primary);
+            color: white !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .header-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        /* ===== HERO - STARTS EXACTLY FROM TOP ===== */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(145deg, var(--gray-100), white);
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            margin-top: 0;  /* No margin */
+            padding-top: 70px;  /* Header height ke barabar */
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .hero-text .highlight {
+            color: var(--accent);
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--gray-500);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            margin: 0;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-image {
+            background: linear-gradient(145deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            padding: 3rem;
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-image i {
+            font-size: 8rem;
+            color: white;
+            opacity: 0.9;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: 0.3s;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            text-decoration: none;
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid var(--primary);
+            transition: 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* ===== SECTION STYLES ===== */
+        section {
+            padding: 80px 5%;
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--gray-500);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ===== SERVICES ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            transition: 0.3s;
+            border: 1px solid var(--gray-200);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 180, 216, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
+
+        /* ===== PRODUCTS ===== */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background: var(--gray-100);
+            border-radius: 12px;
+            padding: 25px 20px;
+            text-align: center;
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .product-card:hover {
+            background: white;
+            border-color: var(--accent);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .product-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .product-card h4 {
+            font-size: 1rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .product-card p {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+
+        /* ===== CONTACT ===== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-200);
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                padding: 30px;
+            }
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .contact-detail {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+            align-items: center;
+        }
+
+        .contact-detail i {
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 180, 216, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        .contact-detail div p:first-child {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 3px;
+        }
+
+        .contact-detail div p:last-child {
+            color: var(--gray-500);
+        }
+
+        .map-card {
+            background: var(--gray-100);
+            border-radius: 16px;
+            padding: 35px;
+            text-align: center;
+            border: 1px solid var(--gray-200);
+        }
+
+        .map-card i {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 60px 5% 30px;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 1000px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .footer-about p {
+            color: #a0b8c7;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+
+        .footer-links h4 {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: white;
+            font-weight: 600;
+        }
+
+        .footer-links a {
+            display: block;
+            color: #a0b8c7;
+            text-decoration: none;
+            margin: 10px 0;
+            transition: 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #a0b8c7;
+            font-size: 0.9rem;
+        }
+
+        /* ===== WHATSAPP FLOAT ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            text-decoration: none;
+            box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.4);
+            transition: 0.3s;
+            z-index: 99;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-stats {
+                justify-content: center;
+            }
+            .hero-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .nav-menu {
+                display: none;
+            }
+        }
+
+        /* Small mobile adjustment */
+        @media (max-width: 480px) {
+            .hero {
+                padding-top: 60px;
+            }
+            .hero-stats {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER - TOP FIXED ===== -->
+<header>
+    <div class="header-container">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-recycle"></i>
+            </div>
+            <div class="logo-text">
+                ScrapX<span>Resources</span>
+            </div>
+        </div>
+        <div class="nav-menu">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#products">Products</a>
+            <a href="#contact">Contact</a>
+            <a href="#contact" class="header-btn">Get Quote</a>
+        </div>
+    </div>
+</header>
+
+<!-- ===== HERO - STARTS FROM TOP ===== -->
+<section class="hero" id="home">
+    <div class="hero-container">
+        <div class="hero-text">
+            <h1>
+                Global <span class="highlight">Scrap Trading</span><br>
+                & Supply Chain Solutions
+            </h1>
+            <p>Partner with industry leaders for sustainable scrap management. Direct mill supply, competitive rates, and real-time tracking.</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <h3>200+</h3>
+                    <p>CLIENTS</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50K+</h3>
+                    <p>TONS/YEAR</p>
+                </div>
+                <div class="stat-item">
+                    <h3>15+</h3>
+                    <p>YEARS</p>
+                </div>
+            </div>
+            <div class="btn-group">
+                <a href="#contact" class="btn-primary">Get Quote →</a>
+                <a href="#services" class="btn-outline">Services</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <i class="fas fa-recycle"></i>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section id="services">
+    <div class="section-container">
+        <div class="section-header">
+            <h2>Our Services</h2>
+            <p>End-to-end scrap management solutions for industrial partners</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-ship"></i></div>
+                <h3>Bulk Supply</h3>
+                <p>10-50 ton weekly supply with quality certification</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-industry"></i></div>
+                <h3>Direct Mill Supply</h3>
+                <p>Direct contracts with processing mills</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-truck"></i></div>
+                <h3>Collection Network</h3>
+                <p>Pan-India collection network with free pickup</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Price Intelligence</h3>
+                <p>Real-time market rates and forecasting</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PRODUCTS ===== -->
+<section id="products" style="background: var(--gray-100);">
+    <div class="section-container">
+        <div class="section-header">
+            <h2>Products</h2>
+            <p>High-grade scrap materials processed to industry standards</p>
+        </div>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-icon"><i class="fas fa-newspaper"></i></div>
+                <h4>Old Newspaper</h4>
+                <p>Grade A · Clean</p>
+            </div>
+            <div class="product-card">
+                <div class="product-icon"><i class="fas fa-box"></i></div>
+                <h4>OCC Scrap</h4>
+                <p>Corrugated</p>
+            </div>
+            <div class="product-card">
+                <div class="product-icon"><i class="fas fa-can"></i></div>
+                <h4>UBC Aluminium</h4>
+                <p>Densified</p>
+            </div>
+            <div class="product-card">
+                <div class="product-icon"><i class="fas fa-cog"></i></div>
+                <h4>Iron Scrap</h4>
+                <p>HMS 1 & 2</p>
+            </div>
+            <div class="product-card">
+                <div class="product-icon"><i class="fas fa-bottle-water"></i></div>
+                <h4>Plastic</h4>
+                <p>PET/HDPE/PP</p>
+            </div>
+            <div class="product-card">
+                <div class="product-icon"><i class="fas fa-bolt"></i></div>
+                <h4>Copper</h4>
+                <p>Birch/Candy</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+    <div class="section-container">
+        <div class="section-header">
+            <h2>Contact Us</h2>
+            <p>Ready to partner with us? Get in touch.</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
+                <div class="contact-detail">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <p>Phone</p>
+                        <p>+91 90844 62757</p>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <p>Email</p>
+                        <p>corporate@scrapx.in</p>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <i class="fas fa-map-pin"></i>
+                    <div>
+                        <p>Corporate Office</p>
+                        <p>Meerut, Uttar Pradesh</p>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <p>Business Hours</p>
+                        <p>Mon - Sat · 8:00 – 20:00</p>
+                    </div>
+                </div>
+            </div>
+            <div class="map-card">
+                <i class="fas fa-globe-asia"></i>
+                <h3 style="color: var(--text-dark); margin-bottom: 10px;">Service Area</h3>
+                <p style="color: var(--gray-500);">Uttar Pradesh · Delhi NCR · Uttarakhand</p>
+                <p style="margin-top: 20px; font-size: 0.9rem;">📍 Free pickup within 100 km</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <div class="logo" style="color: white; margin-bottom: 15px;">
+                    <div class="logo-icon" style="background: var(--accent);">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <div style="font-size: 1.2rem; font-weight: 700;">ScrapX<span style="color: var(--accent);">Resources</span></div>
+                </div>
+                <p>India's leading scrap trading company with global partnerships and sustainable practices.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#products">Products</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms</a>
+                <a href="#">GST Details</a>
+            </div>
+            <div class="footer-links">
+                <h4>Connect</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2026 ScrapX Resources. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ===== WHATSAPP FLOAT ===== -->
+<a href="https://wa.me/919084462757" target="_blank" class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
