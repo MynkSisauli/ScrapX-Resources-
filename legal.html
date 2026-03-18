@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScrapX Resources · Legal Information</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        /* ===== CORPORATE COLOR PALETTE ===== */
+        :root {
+            --primary: #0a2c3d;      /* deep teal */
+            --secondary: #1e4a6d;     /* navy */
+            --accent: #00b4d8;        /* bright cyan */
+            --gray-100: #f8fafc;
+            --gray-200: #eef2f6;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --text-dark: #0f172a;
+            --text-light: #475569;
+            --white: #ffffff;
+            --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.03);
+            --shadow-md: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ===== HEADER - TOP FIXED ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 180, 216, 0.1);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.8rem 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+            letter-spacing: -0.3px;
+        }
+
+        .logo-text span {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* ===== SIDEBAR MENU BUTTON ===== */
+        .menu-btn {
+            background: transparent;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+            display: none;
+        }
+
+        /* Desktop Navigation */
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 1.8rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--accent);
+        }
+
+        .header-btn {
+            background: var(--primary);
+            color: white !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .header-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        /* ===== SIDEBAR (Mobile/Tablet) ===== */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1999;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 280px;
+            height: 100%;
+            background: white;
+            z-index: 2000;
+            transition: 0.3s;
+            box-shadow: var(--shadow-lg);
+            padding: 2rem 1.5rem;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: transparent;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--gray-500);
+            cursor: pointer;
+        }
+
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .sidebar-logo .logo-icon {
+            width: 32px;
+            height: 32px;
+            font-size: 1.2rem;
+        }
+
+        .sidebar-logo .logo-text {
+            font-size: 1.1rem;
+        }
+
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .sidebar-nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .sidebar-nav a i {
+            width: 24px;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .sidebar-nav a:hover, .sidebar-nav a.active {
+            background: var(--gray-100);
+            color: var(--accent);
+        }
+
+        .sidebar-nav .header-btn {
+            margin-top: 1rem;
+            text-align: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white !important;
+            padding: 0.8rem;
+        }
+
+        .sidebar-nav .header-btn:hover {
+            background: var(--secondary);
+        }
+
+        /* ===== PAGE HEADER ===== */
+        .page-header {
+            background: linear-gradient(145deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 120px 5% 60px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .page-header .highlight {
+            color: var(--accent);
+        }
+
+        /* ===== LEGAL SECTION ===== */
+        .legal-section {
+            padding: 80px 5%;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .legal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .legal-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .legal-card {
+            background: white;
+            border-radius: 24px;
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            border: 1px solid var(--gray-200);
+            transition: 0.3s;
+        }
+
+        .legal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent);
+        }
+
+        .card-header {
+            background: var(--primary);
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-header i {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .card-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
+        .card-content p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .card-content h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin: 1.5rem 0 0.8rem;
+        }
+
+        .card-content h3:first-of-type {
+            margin-top: 0;
+        }
+
+        .card-content ul {
+            list-style: none;
+        }
+
+        .card-content li {
+            margin: 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--gray-600);
+        }
+
+        .card-content li i {
+            color: var(--accent);
+            width: 20px;
+        }
+
+        .info-box {
+            background: var(--gray-100);
+            border-radius: 12px;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent);
+        }
+
+        .info-box p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(0, 180, 216, 0.1);
+            color: var(--accent);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+        }
+
+        /* ===== TABLE STYLES ===== */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .table td {
+            padding: 0.8rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .table td:first-child {
+            font-weight: 600;
+            color: var(--text-dark);
+            width: 40%;
+        }
+
+        .table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            background: linear-gradient(145deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 60px 5%;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            text-decoration: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: 0.3s;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2);
+        }
+
+        .btn-outline-light {
+            background: transparent;
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid white;
+            transition: 0.3s;
+        }
+
+        .btn-outline-light:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 60px 5% 30px;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 1000px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .footer-about p {
+            color: #a0b8c7;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+
+        .footer-links h4 {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: white;
+            font-weight: 600;
+        }
+
+        .footer-links a {
+            display: block;
+            color: #a0b8c7;
+            text-decoration: none;
+            margin: 10px 0;
+            transition: 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #a0b8c7;
+            font-size: 0.9rem;
+        }
+
+        .copyright a {
+            color: #a0b8c7;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .copyright a:hover {
+            color: var(--accent);
+        }
+
+        /* ===== WHATSAPP FLOAT ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            text-decoration: none;
+            box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.4);
+            transition: 0.3s;
+            z-index: 99;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .menu-btn {
+                display: block;
+            }
+            .nav-menu {
+                display: none;
+            }
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            .card-header {
+                padding: 1.2rem;
+            }
+            .card-header h2 {
+                font-size: 1.2rem;
+            }
+            .card-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+    <div class="header-container">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-recycle"></i>
+            </div>
+            <div class="logo-text">
+                ScrapX<span>Resources</span>
+            </div>
+        </div>
+        
+        <!-- Desktop Navigation -->
+        <div class="nav-menu">
+            <a href="index.html">Home</a>
+            <a href="index.html#services">Services</a>
+            <a href="index.html#products">Products</a>
+            <a href="rates.html">Scrap Rates</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="legal.html" class="active">Legal</a>
+            <a href="index.html#contact" class="header-btn">Get Quote</a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="menu-btn" id="menuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+</header>
+
+<!-- ===== SIDEBAR OVERLAY ===== -->
+<div class="sidebar-overlay" id="overlay"></div>
+
+<!-- ===== SIDEBAR ===== -->
+<div class="sidebar" id="sidebar">
+    <button class="sidebar-close" id="closeBtn">
+        <i class="fas fa-times"></i>
+    </button>
+    
+    <div class="sidebar-logo">
+        <div class="logo-icon">
+            <i class="fas fa-recycle"></i>
+        </div>
+        <div class="logo-text">
+            ScrapX<span>Resources</span>
+        </div>
+    </div>
+
+    <div class="sidebar-nav">
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="index.html#services"><i class="fas fa-cogs"></i> Services</a>
+        <a href="index.html#products"><i class="fas fa-boxes"></i> Products</a>
+        <a href="rates.html"><i class="fas fa-tags"></i> Scrap Rates</a>
+        <a href="index.html#contact"><i class="fas fa-phone-alt"></i> Contact</a>
+        <a href="legal.html" class="active"><i class="fas fa-gavel"></i> Legal</a>
+        <a href="index.html#contact" class="header-btn"><i class="fas fa-paper-plane"></i> Get Quote</a>
+    </div>
+</div>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="page-header">
+    <h1>Legal <span class="highlight">Information</span></h1>
+    <p>Privacy Policy, Terms of Service, GST Details & Licenses</p>
+</div>
+
+<!-- ===== LEGAL SECTION ===== -->
+<section class="legal-section">
+    <div class="section-container">
+        <div class="legal-grid">
+            
+            <!-- Privacy Policy Card -->
+            <div class="legal-card">
+                <div class="card-header">
+                    <i class="fas fa-shield-alt"></i>
+                    <h2>Privacy Policy</h2>
+                </div>
+                <div class="card-content">
+                    <p>Last Updated: March 18, 2026</p>
+                    
+                    <h3>Information We Collect</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Personal information (name, email, phone)</li>
+                        <li><i class="fas fa-check-circle"></i> Business details for transactions</li>
+                        <li><i class="fas fa-check-circle"></i> Communication records</li>
+                        <li><i class="fas fa-check-circle"></i> Website usage data</li>
+                    </ul>
+
+                    <h3>How We Use Your Information</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> To provide and improve our services</li>
+                        <li><i class="fas fa-check-circle"></i> To process transactions</li>
+                        <li><i class="fas fa-check-circle"></i> To communicate with you</li>
+                        <li><i class="fas fa-check-circle"></i> To comply with legal obligations</li>
+                    </ul>
+
+                    <div class="info-box">
+                        <p><strong>Data Protection:</strong> We implement industry-standard security measures to protect your personal information. We never sell your data to third parties.</p>
+                    </div>
+
+                    <h3>Contact Us</h3>
+                    <p>For privacy-related queries, email us at: privacy@scrapx.in</p>
+                </div>
+            </div>
+
+            <!-- Terms of Service Card -->
+            <div class="legal-card">
+                <div class="card-header">
+                    <i class="fas fa-file-contract"></i>
+                    <h2>Terms of Service</h2>
+                </div>
+                <div class="card-content">
+                    <p>Effective Date: January 1, 2026</p>
+                    
+                    <h3>Agreement to Terms</h3>
+                    <p>By accessing our services, you agree to be bound by these Terms of Service.</p>
+
+                    <h3>Services Provided</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Scrap trading and supply</li>
+                        <li><i class="fas fa-check-circle"></i> Collection and transportation</li>
+                        <li><i class="fas fa-check-circle"></i> Price intelligence and consulting</li>
+                    </ul>
+
+                    <h3>Payment Terms</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Same-day payment for verified suppliers</li>
+                        <li><i class="fas fa-check-circle"></i> Bulk discounts available</li>
+                        <li><i class="fas fa-check-circle"></i> GST applicable on all transactions</li>
+                    </ul>
+
+                    <div class="info-box">
+                        <p><strong>Liability:</strong> ScrapX Resources is not liable for any indirect damages arising from the use of our services.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GST Details Card -->
+            <div class="legal-card">
+                <div class="card-header">
+                    <i class="fas fa-file-invoice"></i>
+                    <h2>GST Details</h2>
+                </div>
+                <div class="card-content">
+                    <table class="table">
+                        <tr>
+                            <td>GSTIN</td>
+                            <td><strong>09JDYBJ8488F1Z5</strong></td>
+                        </tr>
+                        <tr>
+                            <td>PAN</td>
+                            <td><strong>XFJBY2789F</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Business Name</td>
+                            <td>ScrapX Resources Pvt. Ltd.</td>
+                        </tr>
+                        <tr>
+                            <td>Registration Date</td>
+                            <td>January 15, 2020</td>
+                        </tr>
+                        <tr>
+                            <td>GST Rate (Scrap)</td>
+                            <td>5% (HSN 4707, 7204)</td>
+                        </tr>
+                        <tr>
+                            <td>GST Rate (Services)</td>
+                            <td>18% (SAC 9967)</td>
+                        </tr>
+                    </table>
+
+                    <div class="info-box" style="margin-top: 1rem;">
+                        <p><i class="fas fa-info-circle"></i> GST invoices provided for all transactions above ₹5000.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Licenses Card -->
+            <div class="legal-card">
+                <div class="card-header">
+                    <i class="fas fa-certificate"></i>
+                    <h2>Licenses & Certifications</h2>
+                </div>
+                <div class="card-content">
+                    <h3>Business Licenses</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> <strong>Trade License:</strong> MCD/TL/2026/12345</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>MSME Registration:</strong> UDYAM-UP-07-1234567</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Pollution Control:</strong> PCB/SCRAP/2026/789</li>
+                    </ul>
+
+                    <h3>Certifications</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> <strong>ISO 9001:2024</strong> - Quality Management</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>ISO 14001:2024</strong> - Environmental Management</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>R2 Certified</strong> - Responsible Recycling</li>
+                    </ul>
+
+                    <h3>Memberships</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Material Recycling Association of India (MRAI)</li>
+                        <li><i class="fas fa-check-circle"></i> Federation of Indian Chambers of Commerce (FICCI)</li>
+                    </ul>
+
+                    <div class="info-box">
+                        <p><span class="badge">Verified</span> All licenses are current and valid through 2026.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Legal Note -->
+        <div style="margin-top: 40px; text-align: center; padding: 30px; background: var(--gray-100); border-radius: 16px;">
+            <i class="fas fa-balance-scale" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem;"></i>
+            <h3 style="color: var(--text-dark); margin-bottom: 0.5rem;">Governing Law</h3>
+            <p style="color: var(--gray-500); max-width: 700px; margin: 0 auto;">These terms and policies are governed by the laws of India. Any disputes shall be subject to the exclusive jurisdiction of courts in Meerut, Uttar Pradesh.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CTA SECTION ===== -->
+<div class="cta-section">
+    <h2>Have Questions About Our Policies?</h2>
+    <p>Our legal team is available to address any concerns.</p>
+    <div class="cta-buttons">
+        <a href="index.html#contact" class="btn-primary"><i class="fas fa-phone-alt"></i> Contact Us</a>
+        <a href="https://wa.me/919084462757" target="_blank" class="btn-outline-light"><i class="fab fa-whatsapp"></i> WhatsApp Now</a>
+    </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <div class="logo" style="color: white; margin-bottom: 15px;">
+                    <div class="logo-icon" style="background: var(--accent);">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <div style="font-size: 1.2rem; font-weight: 700;">ScrapX<span style="color: var(--accent);">Resources</span></div>
+                </div>
+                <p>India's leading scrap trading company with global partnerships and sustainable practices.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <a href="index.html">Home</a>
+                <a href="index.html#services">Services</a>
+                <a href="index.html#products">Products</a>
+                <a href="rates.html">Scrap Rates</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="legal.html">Legal</a>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#gst">GST Details</a>
+                <a href="#licenses">Licenses</a>
+            </div>
+            <div class="footer-links">
+                <h4>Connect</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2026 ScrapX Resources. All rights reserved. | <a href="legal.html">Legal</a> | <a href="rates.html">Scrap Rates</a></p>
+        </div>
+    </div>
+</footer>
+
+<!-- ===== WHATSAPP FLOAT ===== -->
+<a href="https://wa.me/919084462757" target="_blank" class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- ===== SIDEBAR SCRIPT ===== -->
+<script>
+    // Sidebar functionality
+    const menuBtn = document.getElementById('menuBtn');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    const closeBtn = document.getElementById('closeBtn');
+
+    function openSidebar() {
+        sidebar.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeSidebar() {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    menuBtn.addEventListener('click', openSidebar);
+    closeBtn.addEventListener('click', closeSidebar);
+    overlay.addEventListener('click', closeSidebar);
+
+    // Close sidebar on window resize if open
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 900) {
+            closeSidebar();
+        }
+    });
+</script>
+
+</body>
+</html>
